@@ -21,16 +21,3 @@ html {
 *::after {
   box-sizing: inherit;
 }
-
-/**
- * Basic styles for links
- */
-a {
-  color: abstracts.$daisy-yellow;
-  text-decoration: none;
-
-  @include abstracts.on-event {
-    color: abstracts.$meat;
-    text-decoration: underline;
-  }
-}
