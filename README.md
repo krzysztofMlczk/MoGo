@@ -6,6 +6,8 @@ Website built with HTML and SASS.
 
 It follows:
 
+- Mobile First approach
+
 - [7-1 SASS pattern](https://sass-guidelin.es/#the-7-1-pattern) (_however excludes `/pages` and `/themes` directories due to its characteristics_)
 
   and
