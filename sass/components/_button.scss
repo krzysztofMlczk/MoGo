@@ -1,3 +1,25 @@
 // -----------------------------------------------------------------------------
 // This file contains all styles related to the button component.
 // -----------------------------------------------------------------------------
+@use "../abstracts" as *;
+
+.button {
+  font: normal 700 14px / 17px $font-montserrat;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  color: $white;
+  text-align: center;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &--primary {
+    background-color: $egg-blue;
+  }
+
+  &--secondary {
+    border: 2px solid $white;
+    background-color: transparent;
+  }
+}
