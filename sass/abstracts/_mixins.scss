@@ -1,6 +1,8 @@
 // -----------------------------------------------------------------------------
 // This file contains all application-wide Sass mixins.
 // -----------------------------------------------------------------------------
+@use "variables" as *;
+@use "sass:map";
 
 /// Event wrapper
 /// @author Harry Roberts
@@ -22,5 +24,27 @@
     &:focus-within {
       @content;
     }
+  }
+}
+
+/// Breakpoint mixins
+// Small devices
+@mixin sm {
+  @media (min-width: #{map.get($breakpoints, "small")}) {
+    @content;
+  }
+}
+
+// Medium devices
+@mixin md {
+  @media (min-width:  #{map.get($breakpoints, "medium")}) {
+    @content;
+  }
+}
+
+// Large devices
+@mixin lg {
+  @media (min-width:  #{map.get($breakpoints, "large")}) {
+    @content;
   }
 }
