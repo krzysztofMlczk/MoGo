@@ -19,25 +19,25 @@ It follows:
 In order to build css, in the `root` of the project run:
 
 ```
-    $ sass sass:stylesheets
+    $ sass sass:public/stylesheets
 ```
 
 or
 
 ```
-    $ sass sass/main.scss:stylesheets/main.css
+    $ sass sass/main.scss:public/stylesheets/main.css
 ```
 
 If you want to develop this project further you can build css on the fly with:
 
 ```
-    $ sass --watch sass:stylesheets
+    $ sass --watch sass:public/stylesheets
 ```
 
 or
 
 ```
-    $ sass --watch sass/main.scss:stylesheets/main.css
+    $ sass --watch sass/main.scss:public/stylesheets/main.css
 ```
 
 The above command will enter a watch mode, meaning any change of `.scss` files will cause `.css` to recompile.

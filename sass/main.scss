@@ -13,8 +13,8 @@
 // 5. Layout [BEM Blocks only related to layout]
 @use "layout";
 
-// 6. Page specific styles [NA for now]
-// @use "pages/index"
+// 6. Sections' specific styles
+@use "sections";
 
 // 7. Theming [NA for now]
-// @use "themes/index"
+// @use "themes"
