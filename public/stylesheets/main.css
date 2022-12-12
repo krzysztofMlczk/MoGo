@@ -173,6 +173,11 @@ html {
   padding-right: 20px; /* 3 */
   width: 100%; /* 1 */
 }
+.container--absolute {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
 
 body {
   color: hsl(0deg, 0%, 60%);
@@ -214,6 +219,7 @@ body {
 .section {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 10px;
   padding-top: 30px;
   padding-bottom: 30px;
@@ -302,6 +308,87 @@ body {
     margin-top: 20px;
   }
 }
+.section__description {
+  width: 80%;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.interactive-card {
+  position: relative;
+  height: 400px;
+  background-color: hsl(169deg, 56%, 73%);
+  text-align: center;
+}
+.interactive-card:hover .interactive-card__overlay {
+  opacity: 1;
+}
+.interactive-card__overlay {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(243, 129, 129, 0.9), rgba(252, 227, 136, 0.9));
+  transition: all ease-in-out 0.2s;
+}
+.interactive-card__photo-wrapper {
+  width: 100%;
+  height: 100%;
+  transition: all ease-in-out 0.2s;
+}
+.interactive-card__photo-wrapper:hover {
+  transform: translate(-10px, -10px);
+}
+.interactive-card__photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.interactive-card__photo--shifted {
+  object-position: 20% top;
+}
+.interactive-card__icons-wrapper {
+  background-color: hsl(0deg, 83%, 73%);
+}
+.interactive-card__icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1px;
+}
+.interactive-card__icon-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  background-color: hsl(47deg, 95%, 76%);
+  transition: background-color ease-in-out 0.2s;
+}
+.interactive-card__icon-link:hover {
+  background-color: hsl(0deg, 83%, 73%);
+}
+.interactive-card__icon-link:hover .interactive-card__icon path {
+  fill: hsl(0deg, 0%, 100%);
+}
+.interactive-card__icon path {
+  fill: hsl(0deg, 83%, 73%);
+  transition: fill ease-in-out 0.2s;
+}
+.interactive-card__title {
+  text-transform: capitalize;
+  font-family: "Montserrat", sans-serif;
+}
+.interactive-card__subtitle {
+  text-transform: capitalize;
+  font: normal 400 15px/24px "Roboto", sans-serif;
+}
 
 .footer {
   display: flex;
@@ -341,7 +428,6 @@ body {
 }
 
 .navbar {
-  position: absolute;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -352,22 +438,30 @@ body {
   font: normal 700 30px/37px "Montserrat", sans-serif;
 }
 .navbar__links {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+  display: none;
+  gap: 30px;
   justify-content: space-between;
 }
 @media (min-width: 768px) {
   .navbar__links {
-    position: static;
-    flex-direction: row;
-    gap: 25px;
-    width: auto;
+    display: flex;
   }
+}
+.navbar__hamburger {
+  cursor: pointer;
+  display: block;
+}
+@media (min-width: 768px) {
+  .navbar__hamburger {
+    display: none;
+  }
+}
+.navbar__hamburger path {
+  transition: fill ease-in-out 0.2s;
+  fill: hsl(0deg, 0%, 100%);
+}
+.navbar__hamburger:hover path {
+  fill: hsl(47deg, 95%, 76%);
 }
 .navbar__link {
   font: normal 400 14px/17px "Montserrat", sans-serif;
@@ -381,6 +475,59 @@ body {
   transition: ease-in 0.2s;
 }
 .navbar__link--selected {
+  color: hsl(47deg, 95%, 76%);
+  text-decoration: underline;
+  text-underline-offset: 12px;
+  text-decoration-thickness: 3px;
+}
+
+.mobile-menu {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: hsl(0deg, 83%, 73%);
+  padding: 30px;
+}
+.mobile-menu--closed {
+  visibility: hidden;
+}
+.mobile-menu__close-icon {
+  cursor: pointer;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+}
+.mobile-menu__close-icon:hover path {
+  fill: hsl(47deg, 95%, 76%);
+  transition: fill ease-in-out 0.2s;
+}
+.mobile-menu__close-icon path {
+  fill: hsl(0deg, 0%, 100%);
+}
+.mobile-menu__links {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.mobile-menu__link {
+  cursor: pointer;
+  display: block;
+  text-align: center;
+  padding: 20px;
+  text-transform: capitalize;
+  color: hsl(0deg, 0%, 100%);
+  font: normal 500 30px/35px "Montserrat", sans-serif;
+}
+.mobile-menu__link:hover, .mobile-menu__link:active, .mobile-menu__link:focus, .mobile-menu__link:focus-within {
+  color: hsl(47deg, 95%, 76%);
+  transition: ease-in 0.2s;
+}
+.mobile-menu__link--selected {
   color: hsl(47deg, 95%, 76%);
   text-decoration: underline;
   text-underline-offset: 12px;
@@ -502,12 +649,24 @@ body {
 }
 .service-card__title {
   color: hsl(0deg, 0%, 20%);
-  font: normal 400 14px/17px "Montserrat", sans-serif;
+  font: normal 500 14px/17px "Montserrat", sans-serif;
   text-transform: uppercase;
 }
 .service-card__description {
   color: hsl(0deg, 0%, 60%);
   font: normal 400 15px/24px "Roboto", sans-serif;
+}
+
+.team-grid {
+  display: grid;
+  gap: 20px;
+  width: 100%;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 1024px) {
+  .team-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
